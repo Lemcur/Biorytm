@@ -21,7 +21,6 @@ int main()
     }
     build_biorhythms(datediff, &biorytmy);
 
-    printf("%f", biorytmy[0].current_value);
     draw_columns(&biorytmy);
     return 0;
 }
