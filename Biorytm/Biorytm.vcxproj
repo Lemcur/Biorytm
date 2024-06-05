@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <CompileAs>CompileAsC</CompileAs>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,13 +128,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="biorhythm.c" />
+    <ClCompile Include="biorytm.c" />
     <ClCompile Include="datediff.c" />
     <ClCompile Include="main.c" />
     <ClCompile Include="view.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="biorhythm.h" />
+    <ClInclude Include="biorytm.h" />
     <ClInclude Include="datediff.h" />
     <ClInclude Include="view.h" />
   </ItemGroup>
