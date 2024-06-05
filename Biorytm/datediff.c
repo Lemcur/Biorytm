@@ -6,7 +6,15 @@
 #define BASE_MONTH 1
 
 int datediff_days() {
-    double dt = difftime(build_end_date(), build_birthday());
+    int start_date = build_birthday();
+    if (start_date < 1) {
+        return -1;
+    }
+    int end_date = build_end_date();
+    if (end_date < 1) {
+        return -1;
+    }
+    double dt = difftime(end_date, start_date);
     int days = round(dt / 86400);
 
     return days;

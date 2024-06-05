@@ -28,14 +28,11 @@ Biorytm* build_biorhythms(int days, struct Biorytm (*biorytmy)[4]) {
 
 	return *biorytmy;
 }
-
-double biorhythm_current_value(int days, int cycle_length) {
-	double result;
-	result = sin((double)(days) / (double)(cycle_length) * 2.0 * M_PI);
-	printf("biorytm %d: %f \n", cycle_length, result);
-	//return result;
+/*
+* double biorhythm_current_value(int days, int cycle_length) {
 	return sin(2 * M_PI * days / cycle_length);
 }
+*/
 
 /*
 int generate_chart_values_for_biorhythm(int cycle_length, int days) {
