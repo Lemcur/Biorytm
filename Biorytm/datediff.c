@@ -1,42 +1,50 @@
 #include <time.h>
 #include <math.h>
+#include <stdio.h>
 
 #define BASE_YEAR 1900
 #define BASE_MONTH 1
 
-// use structs from sanitized input?
-int datediff_days(int start_year, int start_month, int start_day, int end_year, int end_month, int end_day) {
-    struct tm tm1 = { 0 };
-    struct tm tm2 = { 0 };
-
-    /* date 1: 2022-09-25 */
-    tm1.tm_year = end_year - BASE_YEAR;
-    tm1.tm_mon = end_month - BASE_MONTH;
-    tm1.tm_mday = end_day;
-    tm1.tm_hour = tm1.tm_min = tm1.tm_sec = 0;
-    tm1.tm_isdst = -1;
-
-    /* date 2: 1990-10-02 */
-    tm2.tm_year = start_year - BASE_YEAR;
-    tm2.tm_mon = start_month - BASE_MONTH;
-    tm2.tm_mday = start_day;
-    tm2.tm_hour = tm2.tm_min = tm2.tm_sec = 0;
-    tm2.tm_isdst = -1;
-
-    time_t t1 = mktime(&tm1);
-    time_t t2 = mktime(&tm2);
-
-    double dt = difftime(t1, t2);
+int datediff_days() {
+    double dt = difftime(build_today(), build_birthday());
     int days = round(dt / 86400);
 
     return days;
 }
-/*
-struct tm build_today() {
-    tm1.tm_year = end_year - BASE_YEAR;
-    tm1.tm_mon = end_month - BASE_MONTH;
-    tm1.tm_mday = end_day;
-    tm1.tm_hour = tm1.tm_min = tm1.tm_sec = 0;
-    tm1.tm_isdst = -1;
+
+int build_today() {
+    time_t t = time(NULL);
+    struct tm today = *localtime(&t);
+
+    today.tm_year = today.tm_year;
+    today.tm_mon = today.tm_mon;
+    today.tm_hour = today.tm_min = today.tm_sec = 0;
+    time_t today_time = mktime(&today);
+
+    return today_time;
 }
-*/
+
+int build_birthday() {
+    struct tm birthday = { 0 };
+    int year, month, day;
+
+    printf("Podaj date w formacie YYYY-MM-DD (Po roku 1970)\n");
+    if (scanf_s("%d-%d-%d", &year, &month, &day) < 3) {
+        printf("Zly format\n");
+        return -1;
+    }
+
+    birthday.tm_year = year - BASE_YEAR;
+    birthday.tm_mon = month - BASE_MONTH;
+    birthday.tm_mday = day;
+    birthday.tm_hour = birthday.tm_min = birthday.tm_sec = 0;
+    birthday.tm_isdst = -1;
+
+    time_t birthday_time = mktime(&birthday);
+
+    if (birthday_time == -1 || (birthday.tm_mon != (month - BASE_MONTH) && birthday.tm_mday != day)) {
+        printf("Data poza mozliwymi miesiacami/dniami\n");
+        return -1;
+    }
+    return birthday_time;
+}

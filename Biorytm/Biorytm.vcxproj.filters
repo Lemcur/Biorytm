@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="biorhythm.c">
+    <ClCompile Include="biorytm.c">
       <Filter>Pliki źródłowe</Filter>
     </ClCompile>
     <ClCompile Include="view.c">
@@ -29,7 +29,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="biorhythm.h">
+    <ClInclude Include="biorytm.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
     <ClInclude Include="view.h">
