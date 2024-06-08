@@ -1,6 +1,34 @@
 #include "biorytm.h"
 #include <stdio.h>
 
+void inspect_biorhythms(struct Biorytm(*biorytmy)[4]) {
+	printf("Nazwa Biorytmu: ");
+	for (int i = 0; i < 4; i++) {
+		printf("%-20s", (*biorytmy)[i].type);
+	}
+	printf("\n");
+
+	printf("Dlugosc cyklu:  ");
+	for (int i = 0; i < 4; i++) {
+		int space_length = 18;
+		printf("%.2d", (*biorytmy)[i].cycle_length);
+		for (int j = 0; j < space_length; j++) {
+			printf(" ");
+		}
+	}
+	printf("\n");
+
+	printf("Obecna wartosc: ");
+	for (int i = 0; i < 4; i++) {
+		int space_length = (*biorytmy)[i].current_value < 0 ? 15 : 16;
+		printf("%.1f", (*biorytmy)[i].current_value * 100);
+		for (int j = 0; j < space_length; j++) {
+			printf(" ");
+		}
+	}
+	printf("\n");
+}
+
 void draw_columns(struct Biorytm(*biorytmy)[4]) {
 	for (int i = 20; i > 0; i--) {
 		int level = i * 10 - 100;

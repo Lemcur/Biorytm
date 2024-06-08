@@ -17,6 +17,10 @@ int main()
 
     build_biorhythms(datediff, &biorytmy);
 
+    inspect_biorhythms(&biorytmy);
     draw_columns(&biorytmy);
     return 0;
+
+    int next_cycle_values[4];
+
 }

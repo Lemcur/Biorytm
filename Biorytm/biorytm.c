@@ -34,7 +34,7 @@ Biorytm* build_biorhythms(int days, struct Biorytm (*biorytmy)[4]) {
 }
 */
 
-/*
+
 int generate_chart_values_for_biorhythm(int cycle_length, int days) {
 	double *sin_values = malloc(cycle_length * sizeof(sin_values));
 	for (int i = 0; i< cycle_length; i++) {
@@ -43,4 +43,4 @@ int generate_chart_values_for_biorhythm(int cycle_length, int days) {
 
 	return sin_values;
 }
-*/
+
