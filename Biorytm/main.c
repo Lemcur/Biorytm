@@ -7,8 +7,13 @@ int main()
 {
     struct Biorytm biorytmy[4] = { 0 };
 
-    int datediff = 0;
-    datediff = abs(datediff_days());
+    int datediff = datediff_days();
+    if (datediff == -1) {
+        printf("Wprowadzono niepoprawne daty. Koniec programu.\n");
+        return 1;
+    }
+
+    datediff = abs(datediff);
 
     build_biorhythms(datediff, &biorytmy);
 

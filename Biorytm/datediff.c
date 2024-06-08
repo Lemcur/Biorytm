@@ -29,7 +29,7 @@ int build_today() {
     today.tm_mon = today.tm_mon;
     today.tm_hour = today.tm_min = today.tm_sec = 0;
     time_t today_time = mktime(&today);
-
+    
     return today_time;
 }
 
@@ -50,7 +50,7 @@ int build_end_date() {
 
     time_t end_date_time = mktime(&end_date);
 
-    if (end_date_time == -1 || (end_date.tm_mon != (month - BASE_MONTH) && end_date.tm_mday != day)) {
+    if (end_date_time == -1 || end_date.tm_mon != (month - BASE_MONTH) || end_date.tm_mday != day) {
         printf("Data poza mozliwymi miesiacami/dniami\n");
         return -1;
     }
@@ -75,7 +75,7 @@ int build_birthday() {
 
     time_t birthday_time = mktime(&birthday);
 
-    if (birthday_time == -1 || (birthday.tm_mon != (month - BASE_MONTH) && birthday.tm_mday != day)) {
+    if (birthday_time == -1 || birthday.tm_mon != (month - BASE_MONTH) || birthday.tm_mday != day) {
         printf("Data poza mozliwymi miesiacami/dniami\n");
         return -1;
     }
