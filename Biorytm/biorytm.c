@@ -3,18 +3,22 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#define FIZYCZNY_LEN 23
+#define EMOCJONALNY_LEN 28
+#define INTELEKTUALNY_LEN 33
+
 Biorytm* build_biorhythms(int days, struct Biorytm (*biorytmy)[4]) {
-	(*biorytmy)[0].cycle_length = 23;
+	(*biorytmy)[0].cycle_length = FIZYCZNY_LEN;
 	(*biorytmy)[0].current_value = sin((double)(days) / (double)((*biorytmy)[0].cycle_length) * 2.0 * M_PI);
 	strcpy((*biorytmy)[0].type, "Fizyczny");
 	(*biorytmy)[0].display_width = sizeof("Fizyczny") - 1;
 
-	(*biorytmy)[1].cycle_length = 28;
+	(*biorytmy)[1].cycle_length = EMOCJONALNY_LEN;
 	(*biorytmy)[1].current_value = sin((double)(days) / (double)((*biorytmy)[1].cycle_length) * 2.0 * M_PI);
 	strcpy((*biorytmy)[1].type, "Emocjonalny");
 	(*biorytmy)[1].display_width = sizeof("Emocjonalny") - 1;
 
-	(*biorytmy)[2].cycle_length = 33;
+	(*biorytmy)[2].cycle_length = INTELEKTUALNY_LEN;
 	(*biorytmy)[2].current_value = sin((double)(days) / (double)((*biorytmy)[2].cycle_length) * 2.0 * M_PI);
 	strcpy((*biorytmy)[2].type, "Intelektualny");
 	(*biorytmy)[2].display_width = sizeof("Intelektualny") - 1;
