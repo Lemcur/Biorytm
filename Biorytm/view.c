@@ -57,5 +57,45 @@ void draw_columns(struct Biorytm(*biorytmy)[4]) {
 		printf("\n");
 	}
 	printf("_________________________________________________________\n");
-	printf("Stopien, %s, %s, %s, %s", (*biorytmy)[0].type, (*biorytmy)[1].type, (*biorytmy)[2].type, (*biorytmy)[3].type);
+	printf("Stopien, %s, %s, %s, %s\n", (*biorytmy)[0].type, (*biorytmy)[1].type, (*biorytmy)[2].type, (*biorytmy)[3].type);
+}
+
+void draw_biorhythm_chart(double** next_cycle_values, char* letters) {
+	for (int i = 20; i > 0; i--) {
+		int level = i * 10 - 100;
+		printf("%.3d|", abs(level));
+		for (int day = 0; day < 23; day++) {
+			char letter_to_draw[4] = "    ";
+
+			for (int biorhythm = 0; biorhythm < 4; biorhythm++) {
+				int rounded_value = next_cycle_values[biorhythm][day] * 100;
+				int remainder_of_ten = rounded_value % 10;
+				if ((remainder_of_ten > 5 && rounded_value > 0) || (remainder_of_ten <= 5 && rounded_value < 0)) {
+					rounded_value += 10 - remainder_of_ten;
+				}
+				else {
+					rounded_value -= remainder_of_ten;
+				}
+
+				if (rounded_value == level) {
+					letter_to_draw[biorhythm] = letters[biorhythm];
+				}
+			}
+
+			for (int letter = 0; letter < 4; letter++) {
+				printf("%c", letter_to_draw[letter]);
+			}
+		}
+
+		printf("\n");
+	}
+
+	for (int i = 0; i < 23; i++) {
+		if (i % 5 == 0) {
+			printf("%d", i);
+		}
+		else if (i % 5 != 1) {
+			printf(" ");
+		}
+	}
 }
