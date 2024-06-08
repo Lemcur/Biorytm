@@ -6,7 +6,7 @@ void draw_columns(struct Biorytm(*biorytmy)[4]) {
 		int level = i * 10 - 100;
 		printf("%.2d|      ", abs(level));
 		for (int j = 0; j < 4; j++) {
-			if ((*biorytmy)[j].current_value * 100 > level) {
+			if ((*biorytmy)[j].current_value * 100 >= level) {
 				int left_space, right_space;
 				left_space = ((*biorytmy)[j].display_width / 2);
 				right_space = (*biorytmy)[j].display_width - left_space - 1;

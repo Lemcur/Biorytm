@@ -14,6 +14,7 @@ int datediff_days() {
     if (end_date < 1) {
         return -1;
     }
+
     double dt = difftime(end_date, start_date);
     int days = round(dt / 86400);
 
@@ -31,6 +32,7 @@ int build_today() {
 
     return today_time;
 }
+
 int build_end_date() {
     struct tm end_date = { 0 };
     int year, month, day;

@@ -13,12 +13,8 @@ int main()
     };
 
     int datediff = 0;
-    datediff = datediff_days();
+    datediff = abs(datediff_days());
 
-    if (datediff < 1) {
-        printf("Nie mozna obsluzyc takiej daty");
-        return 0;
-    }
     build_biorhythms(datediff, &biorytmy);
 
     draw_columns(&biorytmy);
