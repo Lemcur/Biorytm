@@ -5,7 +5,7 @@
 #include <stdlib.h>
 Biorytm* build_biorhythms(int days, struct Biorytm (*biorytmy)[4]) {
 	(*biorytmy)[0].cycle_length = 23;
-	(*biorytmy)[0].current_value = sin((double)(days) / (double)((*biorytmy)[0].cycle_length) * 2.0 * M_PI);//biorhythm_current_value(days, (*biorytmy)[0].cycle_length);
+	(*biorytmy)[0].current_value = sin((double)(days) / (double)((*biorytmy)[0].cycle_length) * 2.0 * M_PI);
 	strcpy((*biorytmy)[0].type, "Fizyczny");
 	(*biorytmy)[0].display_width = sizeof("Fizyczny") - 1;
 
